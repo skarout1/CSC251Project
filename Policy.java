@@ -59,7 +59,7 @@ public class Policy{
    */
    public String getSmoker(){
       if(smoker.equalsIgnoreCase("smoker")) 
-         return "smoker";
+         return smoker;
       else
          return "non-smoker";}
    /**
