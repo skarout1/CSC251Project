@@ -5,6 +5,7 @@ public class Policy{
    
    private String providerName;
    private int policyNum;
+   private static int policyObjects = 0;
    
    public Policy(){
       policyNum = 0;
@@ -13,6 +14,7 @@ public class Policy{
    public Policy(String pNum, int pN){
       providerName = pNum;
       policyNum = pN;
+      policyObjects++;
    }
    /**
       Method getProviderName gets an returns the prvider name from the document
@@ -27,6 +29,9 @@ public class Policy{
    */
    public int getPolicyNum(){
       return policyNum;}
+   public static int policyObjects(){
+      return policyObjects;
+   }
       
    public String toString(){
       return   "Policy Number: " + policyNum +
