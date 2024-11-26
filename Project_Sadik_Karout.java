@@ -26,38 +26,31 @@ public class Project_Sadik_Karout
                policyFile.nextLine();
                smoker = policyFile.nextLine();
                height = policyFile.nextDouble();
-               policyFile.nextLine();
                weight = policyFile.nextDouble();
                
                if(policyFile.hasNext())
                {
                   policyFile.nextLine();
+               }
+               if(policyFile.hasNext())
+               {
                   policyFile.nextLine();
                }
    
                
-               Policy p = new Policy(policyNum, providerName, firstName, lastName, age, smoker, height, weight);
+               Policy p = new Policy(providerName, policyNum, new PolicyHolder(firstName, lastName, age, smoker, height, weight));
                
                policyList.add(p);
          }
          
          policyFile.close();
+         Policy policy = new Policy();
             
          //Policy insure = new Policy(policyNum, providerName, firstName, lastName, age, smoker, height, weight);
          for(int i=0; i < policyList.size(); i++)
          {   
-            System.out.println("Policy Number: " + policyList.get(i).getPolicyNum());
-            System.out.println("Provider Name: " + policyList.get(i).getProviderName());
-            System.out.println("Policyholder's First Name: " + policyList.get(i).getFirstName());
-            System.out.println("Policyholder's Last Name: " + policyList.get(i).getLastName());
-            System.out.println("Policyholder's Age: " + policyList.get(i).getAge()); 
-            System.out.println("Policyholder's Smoking Status: " + policyList.get(i).getSmoker());
-            System.out.println("Policyholder's Height: " + policyList.get(i).getHeight());
-            System.out.println("Policyholder's Weight: " + policyList.get(i).getWeight());
-            System.out.printf("Policyholder's BMI: %.2f", policyList.get(i).getBmi());
-            System.out.printf("\nPolicy Price: $%.2f", policyList.get(i).calcTotal());
-            System.out.println("\n");
-            if(policyList.get(i).getSmoker().equalsIgnoreCase("smoker"))
+            System.out.println(policyList.get(i));
+            if(policyList.get(i).getPolicyHolder().getSmoker().equalsIgnoreCase("smoker"))
             {
               totalSmokers ++; 
             }
@@ -65,9 +58,10 @@ public class Project_Sadik_Karout
             {
                totalNonSmokers ++;
             } 
-            
+            System.out.println();
          }
          
+         System.out.println("There were " + (Policy.getPolicyObjects()) + " Policy objects created");
          System.out.println("The total number of smokers is: " + totalSmokers);
          System.out.println("The total number of non smokers is: " + totalNonSmokers);
          
