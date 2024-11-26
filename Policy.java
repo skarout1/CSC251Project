@@ -6,20 +6,33 @@ public class Policy{
    private String providerName;
    private int policyNum;
    private static int policyObjects = 0;
+   private PolicyHolder policyHolder;
    
    public Policy(){
       policyNum = 0;
-      providerName = ""; 
+      providerName = "";
+      policyHolder = new PolicyHolder();
    }
-   public Policy(String pNum, int pN){
-      providerName = pNum;
-      policyNum = pN;
+
+   public Policy(String providerName, int policyNum, PolicyHolder policyHolder){
+      this.providerName = providerName;
+      this.policyNum = policyNum;
+      this.policyHolder = new PolicyHolder(policyHolder);
       policyObjects++;
+   }
+   
+   public Policy(Policy obj){
+      providerName = obj.providerName;
+      policyNum = obj.policyNum;
+      policyHolder = new PolicyHolder(obj.policyHolder);
    }
    /**
       Method getProviderName gets an returns the prvider name from the document
       @return provider name  
    */
+   public PolicyHolder getPolicyHolder(){
+      return policyHolder;
+   }
    public String getProviderName(){
       return providerName;
    }
@@ -29,13 +42,13 @@ public class Policy{
    */
    public int getPolicyNum(){
       return policyNum;}
-   public static int policyObjects(){
+   public static int getPolicyObjects(){
       return policyObjects;
    }
       
    public String toString(){
-      return   "Policy Number: " + policyNum +
-               "Provider Name: " + providerName;
-               //PolicyHolder.toString();
+      return   "\n\tPolicy Number: " + policyNum +
+               "\n\tProvider Name: " + providerName +
+               policyHolder.toString();
    }
 }
