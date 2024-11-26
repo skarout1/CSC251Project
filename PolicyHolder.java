@@ -6,16 +6,24 @@ public class PolicyHolder{
    
    public PolicyHolder(){
       age = 0;
-      height = 0; weight = 0; bmi = 0; 
+      height = 0; weight = 0; 
       firstName = ""; lastName = ""; smoker = "";
    }
-   public PolicyHolder(String fN, String lN, int a, String s, double h, double w){
-      firstName = fN;
-      lastName = lN;
-      age = a;
-      smoker = s;
-      height = h;
-      weight = w;
+   public PolicyHolder(String firstName, String lastName, int age, String smoker, double height, double weight){
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.age = age;
+      this.smoker = smoker;
+      this.height = height;
+      this.weight = weight;
+   }
+   public PolicyHolder(PolicyHolder obj){
+      firstName = obj.firstName;
+      lastName = obj.lastName;
+      age = obj.age;
+      smoker = obj.smoker;
+      height = obj.height;
+      weight = obj.weight;
    }
    /**
       Method getFirstName gets an returns the first name of the policy holder from the document
@@ -104,14 +112,14 @@ public class PolicyHolder{
       }
    
    public String toString(){
-      return "Policyholder's First Name: " + firstName +
-             "Policyholder's Last Name: " + lastName + 
-             "Policyholder's Age: " + age +
-             "Policyholder's Smoking Status (Y/N): " + getSmoker() +
-             "Policyholder's Height: " + height + " inches" + 
-             "Policyholder's Weight: " + weight + " pounds" +
-             "Policyholder's BMI: " + getBmi() + 
-             "Policy Price: " + calcTotal();
+      return "\n\tPolicyholder's First Name: " + firstName +
+             "\n\tPolicyholder's Last Name: " + lastName + 
+             "\n\tPolicyholder's Age: " + age +
+             "\n\tPolicyholder's Smoking Status (Y/N): " + getSmoker() +
+             "\n\tPolicyholder's Height: " + height + " inches" + 
+             "\n\tPolicyholder's Weight: " + weight + " pounds" +
+             "\n\tPolicyholder's BMI: " + String.format("%,.2f", getBmi()) + 
+             "\n\tPolicy Price: $" + String.format("%,.2f", calcTotal());
              
    }
 }
